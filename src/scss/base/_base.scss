@@ -1,0 +1,42 @@
+@use '../abstracts/colors';
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: colors.$body-background-color;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    color: colors.$link-color;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+        color: colors.$link-color-hover;
+    }
+}
+
+//CANVAS
+#webgl {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}

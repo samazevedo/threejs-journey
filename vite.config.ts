@@ -1,41 +1,40 @@
 import { defineConfig } from 'vite'
-import * as path from 'path'
+import path from 'path'
+import glsl from 'vite-plugin-glsl'
 
 export default defineConfig({
-    // include this when using react
-    // plugins: [
-    //     // react()
-    // ],
-    // root: '/src',
-    // publicDir: '/public',
-    // base: './',
-    // server: {
-    //     host: true, // open to local network and display URL
-    //     port: 3000,
-    //     open: !(
-    //         'SANDBOX_URL' in process.env || 'CODESANDBOX_HOST' in process.env
-    //     ), // open if not codesandbox
-    // },
-    // build: {
-    //     rollupOptions: {
-    //         input: '/path/to/main.ts',
-    //     },
-    //     outDir: 'dist', // output in the dist folder
-    //     emptyOutDir: true,
-    //     assetsDir: 'assets',
-    //     sourcemap: true,
-    //     minify: 'terser', // Minify the code (options: 'terser', 'esbuild', or false)
-    //     chunkSizeWarningLimit: 500, // warn if the size exceeds this lime in kb
-    // },
-
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, './scr/'), // alias for src
-            '@components': path.resolve(__dirname, './src/components'),
-            '@three': path.resolve(__dirname, 'src/three'),
-            '@utils': path.resolve(__dirname, './src/utils'),
-            '@types': path.resolve(__dirname, './src/types'),
-            '@styles': path.resolve(__dirname, 'src/styles'),
-        },
-    },
+	base: './', // use relative path for base
+	root: path.join(__dirname, 'src'), // root where index.html is located
+	publicDir: path.resolve(__dirname, './public'), //relative to root src
+	server: {
+		// host: 'localhost',
+		host: '0.0.0.0', // listen to network via ip address
+		port: 3000,
+		strictPort: true,
+		open: true,
+	},
+	resolve: {
+		alias: {
+			// import modules from the src directory using '@'
+			'@': path.resolve(__dirname, './src'),
+			'@helpers': path.resolve(__dirname, './src/helpers'),
+			'@shaders': path.resolve(__dirname, './src/shaders'),
+		},
+	},
+	build: {
+		outDir: '../dist',
+		assetsDir: 'assets',
+		minify: 'terser',
+		sourcemap: true,
+		rollupOptions: {
+			output: {
+				// config output asset file names
+				entryFileNames: 'js/[name]-[hash].js',
+				chunkFileNames: 'js/[name]-[hash].js',
+				assetFileNames: '[ext]/[name]-[hash].[ext]',
+			},
+			input: 'src/index.html',
+		},
+	},
+	plugins: [glsl()],
 })
