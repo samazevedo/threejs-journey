@@ -13,14 +13,33 @@ uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
 uniform vec2 uResolution;
 uniform sampler2D uImageTexture;
+uniform sampler2D uDisplacementTexture;
+
+in float aIntensity;
+in float aAngle;
 
 void main() {
     vUv = uv;
+    // DISPLACEMENT
+    vec3 newPosition = position;
+    float displacementIntensity = texture(uDisplacementTexture, uv).r;
+    displacementIntensity = smoothstep(0.1, 0.3, displacementIntensity);
+
+    vec3 displacement = vec3(
+        cos(aAngle) * 0.2,
+        sin(aAngle) * 0.2,
+        1.0
+    );
+    displacement = normalize(displacement);
+    displacement *= displacementIntensity;
+    displacement *= 3.0;
+    displacement *= aIntensity;
+    newPosition +=displacement;
 
     // FINAL POSITION
     // vec4 modelPosition = modelViewMatrix * vec4(position, 1.0);
     // vec4 projectedPosition = projectionMatrix * viewPosition;
-    vec4 viewPosition = modelViewMatrix * vec4(position, 1.0);
+    vec4 viewPosition = modelViewMatrix * vec4(newPosition, 1.0);
     gl_Position = projectionMatrix * viewPosition;;
 
     // PICTURE
