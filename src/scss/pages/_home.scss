@@ -1,7 +1,49 @@
+@use "../abstracts/colors";
 .main {
 	position: relative;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 	z-index: 1;
+}
+.hero {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 1;
+	padding: 2rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-items: center;
+	align-items: center;
+	h1 {
+		text-align: center;
+		margin-bottom: 1rem;
+		color: hsl(196, 46%, 14%);
+		font-size: 2.5rem;
+		@media (min-width: 768px) {
+			font-size: 4rem;
+		}
+	}
+	h2 {
+		text-align: center;
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+		color: hsl(197, 86%, 62%);
+		@media (min-width: 768px) {
+			font-size: 2rem;
+		}
+	}
+	.container {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		grid-template-columns: 1fr;
+		justify-items: center;
+		align-items: center;
+	}
+	// @media (min-width: 768px) {
+	// 	grid-template-columns: 1fr 1fr;
+	// }
 }

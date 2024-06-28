@@ -1,42 +1,43 @@
-@use '../abstracts/colors';
+@use "../abstracts/colors";
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: colors.$body-background-color;
+	margin: 0;
+	padding: 0;
+	background: colors.$bg-gradient;
+	// background: colors.$background-color;
 }
 
 p {
-    margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 
 ul,
 ol {
-    list-style: none;
-    padding: 0;
+	list-style: none;
+	padding: 0;
 }
 
 a {
-    color: colors.$link-color;
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
-        color: colors.$link-color-hover;
-    }
+	color: colors.$link-color;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+		color: colors.$link-color-hover;
+	}
 }
 
 //CANVAS
 #webgl {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: hidden;
 }

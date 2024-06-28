@@ -1,5 +1,14 @@
 // background
-$body-background-color: hsl(0, 0%, 23%);
+$bg-color1: hsl(158, 71%, 75%);
+$bg-color2: hsl(33, 74%, 70%);
+$bg-color3: hsl(101, 66%, 78%);
+$bg-gradient: linear-gradient(
+		to right bottom,
+		$bg-color1,
+		$bg-color2,
+		$bg-color3
+	)
+	no-repeat center center fixed;
 
 // links
 $link-color: hsl(151, 88%, 84%);
