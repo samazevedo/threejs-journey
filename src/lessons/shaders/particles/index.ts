@@ -10,6 +10,8 @@ const APP = () => {
 		throw new Error("Failed to load canvas!")
 	}
 
+	// change canvas clear color
+
 	const scene = new THREE.Scene()
 	//////////////////////
 	//      CAMERA    //
@@ -36,7 +38,7 @@ const APP = () => {
 	//      TEXTURES    //
 	//////////////////////
 	const textureLoader = new THREE.TextureLoader()
-	const imageTexture = textureLoader.load("/images/flower2.png")
+	const imageTexture = textureLoader.load("/images/bg.jpg")
 	imageTexture.colorSpace = THREE.SRGBColorSpace
 
 	//////////////////////
@@ -209,6 +211,7 @@ const APP = () => {
 	})
 	renderer.setSize(sizes.width, sizes.height)
 	renderer.setPixelRatio(sizes.pixelRatio)
+	renderer.setClearColor("#000000", 1)
 
 	//////////////////////
 	//      CONTROLS   //

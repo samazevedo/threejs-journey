@@ -32,7 +32,7 @@ void main() {
     );
     displacement = normalize(displacement);
     displacement *= displacementIntensity;
-    displacement *= 3.0;
+    displacement *= 3.5;
     displacement *= aIntensity;
     newPosition +=displacement;
 
@@ -46,7 +46,7 @@ void main() {
     float pictureIntensity = texture(uImageTexture, uv).r;
 
     // POINT SIZE
-    gl_PointSize = 0.13 * pictureIntensity * uResolution.y;
+    gl_PointSize = 0.07 * pictureIntensity * uResolution.y;
     gl_PointSize *=(1.0 / - viewPosition.z);
 
 
